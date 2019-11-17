@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ARCoreSample</string>
+    <string name="walk">Walk</string>
+    <string name="jump">Jump</string>
+</resources>
