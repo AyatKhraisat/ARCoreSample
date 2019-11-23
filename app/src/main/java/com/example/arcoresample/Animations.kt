@@ -5,6 +5,11 @@ package com.example.arcoresample
  */
 
 
-const val WALKING = 0
-const val JUMP = 1
+
+const val DANCE = 0
+const val EXCITED = 1
+const val GREETING = 2
+const val SAD = 3
+const val SURPRISED =4
+
 

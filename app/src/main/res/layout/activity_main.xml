@@ -8,25 +8,102 @@
 
 
     <fragment
-        android:id="@+id/frag_sceneform"
-        class="com.google.ar.sceneform.ux.ArFragment"
+        android:id="@+id/ar_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:name="com.example.arcoresample.ArFragment"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_jump"
+
+    <ImageButton
+        android:id="@+id/ib_switch_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_camera_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@color/white"
-        android:text="@string/jump"
-        app:iconTint="@color/white"
-        app:icon="@drawable/ic_jump"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_greeting"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_sad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_sad"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fab_greeting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_dancing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_dancing"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fab_sad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_surprised"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_surprised"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fab_dancing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_excited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:src="@drawable/ic_excited"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/fab_surprised"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@null" />
+
+    <ProgressBar
+        android:id="@+id/pb_capture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_capture"
+        app:layout_constraintEnd_toEndOf="@+id/fab_capture"
+        app:layout_constraintStart_toStartOf="@+id/fab_capture"
+        app:layout_constraintTop_toTopOf="@+id/fab_capture" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_capture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_camera"
+        app:background="@drawable/gradent"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/ar_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

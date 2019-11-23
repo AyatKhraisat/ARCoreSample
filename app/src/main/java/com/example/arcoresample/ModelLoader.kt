@@ -17,6 +17,7 @@ package com.example.arcoresample
 
 import android.util.Log
 import android.util.SparseArray
+import androidx.appcompat.app.AppCompatActivity
 
 import com.google.ar.sceneform.rendering.ModelRenderable
 
@@ -35,17 +36,17 @@ import java.util.concurrent.CompletableFuture
  * To avoid this, use a non-nested class which is not an activity nor fragment. Hold a weak
  * reference to the activity or fragment and use that when making calls affecting the UI.
  */
-class ModelLoader internal constructor(owner: MainActivity) {
+class ModelLoader internal constructor(owner: AppCompatActivity) {
 
     companion object {
-        private val TAG = "ModelLoader"
+        private val TAG = ModelLoader::class.java.simpleName
     }
 
     private val futureSet = SparseArray<CompletableFuture<ModelRenderable>>()
-    private val owner: WeakReference<MainActivity> = WeakReference(owner)
+    private val owner: WeakReference<AppCompatActivity> = WeakReference(owner)
 
 
-    internal fun loadModel(
+     fun loadModel(
         id: Int,
         resourceId: Int,
         setRenderable: (Int, ModelRenderable?) -> ModelRenderable?,

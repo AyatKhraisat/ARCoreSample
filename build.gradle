@@ -28,9 +28,12 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-
-sceneform.asset('sampledata/Mario.fbx',
+sceneform.asset('sampledata/models/mario_hat.fbx',
         'default',
-        'sampledata/Mario.sfa',
-        'src/main/assets/Mario',
-        ['sampledata/right strafe walking.fbx', 'sampledata/skinning test.fbx', 'sampledata/gangnam style.fbx', 'sampledata/walking.fbx', 'sampledata/back flip to uppercut.fbx', 'sampledata/idle.fbx', 'sampledata/samba dancing.fbx', 'sampledata/left strafe walking.fbx', 'sampledata/jump.fbx', 'sampledata/left turn 90.fbx'])
+        'sampledata/models/mario_hat.sfa',
+        'src/main/assets/mario_hat')
+
+sceneform.asset('sampledata/models/mario.fbx',
+        'default',
+        'sampledata/models/mario.sfa',
+        'src/main/assets/mario')

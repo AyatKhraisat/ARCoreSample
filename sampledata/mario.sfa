@@ -1,92 +1,29 @@
 {
   animations: [
-
     {
       clips: [
         {
-          name: 'mixamo.com',
+          name: 'Armature|dancing',
         },
-      ],
-      path: 'sampledata/right strafe walking.fbx',
-    },
-    {
-      clips: [
         {
-          name: 'mixamo.com',
+          name: 'Armature|excited',
         },
-      ],
-      path: 'sampledata/skinning test.fbx',
-    },
-    {
-      clips: [
         {
-          name: 'mixamo.com',
+          name: 'Armature|greeting',
         },
-      ],
-      path: 'sampledata/gangnam style.fbx',
-    },
-    {
-      clips: [
         {
-          name: 'mixamo.com',
-                     runtime_name: 'walking',
+          name: 'Armature|sad',
         },
-      ],
-      path: 'sampledata/walking.fbx',
-    },
-    {
-      clips: [
         {
-          name: 'mixamo.com',
+          name: 'Armature|surprised',
         },
       ],
-      path: 'sampledata/back flip to uppercut.fbx',
-    },
-    {
-      clips: [
-        {
-          name: 'mixamo.com',
-        },
-      ],
-      path: 'sampledata/idle.fbx',
-    },
-    {
-      clips: [
-        {
-          name: 'mixamo.com',
-        },
-      ],
-      path: 'sampledata/samba dancing.fbx',
-    },
-    {
-      clips: [
-        {
-          name: 'mixamo.com',
-        },
-      ],
-      path: 'sampledata/left strafe walking.fbx',
-    },
-    {
-      clips: [
-        {
-          name: 'mixamo.com',
-               runtime_name: 'jump',
-        },
-      ],
-      path: 'sampledata/jump.fbx',
-    },
-    {
-      clips: [
-        {
-          name: 'mixamo.com',
-        },
-      ],
-      path: 'sampledata/left turn 90.fbx',
+      path: 'src/main/assets/mario_final.fbx',
     },
   ],
   materials: [
     {
-      name: '09 - Default',
+      name: '09 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -124,7 +61,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '13 - Default',
+      name: '13 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -162,7 +99,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '03 - Default',
+      name: '03 - Default.002',
       parameters: [
         {
           baseColor: [
@@ -200,7 +137,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '07 - Default',
+      name: '07 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -238,7 +175,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '08 - Default',
+      name: '08 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -276,7 +213,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '15 - Default',
+      name: '15 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -314,7 +251,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '20 - Default',
+      name: '20 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -352,7 +289,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '01 - Default',
+      name: '01 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -390,7 +327,45 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '19 - Default',
+      name: '03 - Default.003',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: '19 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -428,7 +403,7 @@
       source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
     },
     {
-      name: '14 - Default',
+      name: '14 - Default.001',
       parameters: [
         {
           baseColor: [
@@ -469,14 +444,15 @@
   model: {
     attributes: [
       'Position',
+      'Color',
       'TexCoord',
       'Orientation',
       'BoneIndices',
       'BoneWeights',
     ],
     collision: {},
-    file: 'sampledata/Mario.fbx',
-    name: 'Mario',
+    file: 'src/main/assets/mario_final.fbx',
+    name: 'mario_final',
     recenter: 'root',
     scale: 0.16914699999999999,
   },
