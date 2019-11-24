@@ -9,8 +9,8 @@
 
     <fragment
         android:id="@+id/ar_fragment"
-        android:layout_width="match_parent"
         android:name="com.example.arcoresample.ArFragment"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -25,17 +25,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_greeting"
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/animation_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="8dp"
-        android:src="@drawable/ic_greeting"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@null" />
+        app:constraint_referenced_ids="fab_sad,fab_dancing,fab_surprised,fab_excited"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_sad"
@@ -44,7 +39,7 @@
         android:layout_margin="8dp"
         android:src="@drawable/ic_sad"
         app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/fab_greeting"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@null" />
 

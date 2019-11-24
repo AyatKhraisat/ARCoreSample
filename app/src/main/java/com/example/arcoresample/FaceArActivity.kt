@@ -1,7 +1,11 @@
 package com.example.arcoresample
 
 import android.content.Intent
+import android.content.res.Configuration.ORIENTATION_PORTRAIT
+import android.media.CamcorderProfile
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.ar.core.AugmentedFace
@@ -23,6 +27,7 @@ class FaceArActivity : AppCompatActivity() {
     private val faceNodeMap = HashMap<AugmentedFace, AugmentedFaceNode>()
     private lateinit var modelLoader: ModelLoader
     private lateinit var marioHatRenderable: ModelRenderable
+    private lateinit var videoRecorder: VideoRecorder
 
 
     companion object {
@@ -38,21 +43,54 @@ class FaceArActivity : AppCompatActivity() {
                 as FaceArFragment
         initArFaceScene()
         loadModels()
+        initVideoRecorder()
         ib_switch_camera.setOnClickListener { switchCamera() }
-        fab_capture.setOnClickListener {
-            takePhoto(
-                this@FaceArActivity,
-                faceArFragment.arSceneView
-            )
+        fab_capture.run {
+            setOnClickListener({
+            hideControls()
+                takePhoto(this@FaceArActivity, faceArFragment.arSceneView,{
+                 showControls()
+                })
+            })
+
+            setOnLongClickListener({
+                videoRecorder.toggleRecording()
+                true
+            })
+            setOnTouchListener({ view, motionEvent ->
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    val eventDuration = motionEvent.getEventTime() - motionEvent.getDownTime();
+                    if (eventDuration > 500) {
+                        videoRecorder.stopRecording()
+                    }
+                }
+                false
+            })
         }
     }
 
 
+    private fun showControls() {
+
+        pb_capture_face.visibility = View.GONE
+        fab_capture.isClickable = true
+        ib_switch_camera.visibility = View.VISIBLE
+    }
+
+    private fun hideControls() {
+        pb_capture_face.visibility = View.VISIBLE
+        fab_capture.isClickable = false
+        ib_switch_camera.visibility = View.GONE
+    }
+    private fun initVideoRecorder() {
+        videoRecorder = VideoRecorder(this)
+        videoRecorder.setSceneView(faceArFragment.arSceneView)
+    }
+
     private fun loadModels() {
         modelLoader = ModelLoader(this)
 
-        modelLoader.loadModel(
-            FaceArActivity.MARIO_HAT_MODLE, R.raw.mario_hat,
+        modelLoader.loadModel(MARIO_HAT_MODLE, R.raw.mario_hat,
             { id, modelRenderable ->
                 marioHatRenderable = modelRenderable!!
                 marioHatRenderable.isShadowReceiver = false

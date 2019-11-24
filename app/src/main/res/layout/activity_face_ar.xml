@@ -22,6 +22,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ProgressBar
+        android:id="@+id/pb_capture_face"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fab_capture"
+        app:layout_constraintEnd_toEndOf="@+id/fab_capture"
+        app:layout_constraintStart_toStartOf="@+id/fab_capture"
+        app:layout_constraintTop_toTopOf="@+id/fab_capture" />
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_capture"
         android:layout_width="wrap_content"

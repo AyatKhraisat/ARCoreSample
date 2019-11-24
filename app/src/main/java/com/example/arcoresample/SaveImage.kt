@@ -2,7 +2,6 @@ package com.example.arcoresample
 
 import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Environment
@@ -11,12 +10,13 @@ import android.os.HandlerThread
 import android.provider.MediaStore
 import android.view.PixelCopy
 import android.widget.Toast
-import androidx.core.content.FileProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.google.ar.sceneform.ArSceneView
 import java.io.File
 import java.io.File.separator
 import java.io.FileOutputStream
 import java.io.OutputStream
+
 
 /**
  *Created by Ayat Khriasat on 22,November,2019 at 19:30
@@ -56,8 +56,11 @@ public fun saveImage(bitmap: Bitmap, context: Context, fileName: String) {
 }
 
 
-fun takePhoto(context: Context,arSceneView: ArSceneView) {
-    val filename = getFileName();
+fun takePhoto(context: Context,arSceneView: ArSceneView,onSuccess: () ->Unit) {
+
+    if (!hasPermission(context)) return
+
+    val filename = generateFileName();
 
     val bitmap = Bitmap.createBitmap(
         arSceneView.getWidth(), arSceneView.getHeight(),
@@ -72,15 +75,10 @@ fun takePhoto(context: Context,arSceneView: ArSceneView) {
             saveImage(bitmap, context, filename);
 
             val photoFile = File(getDirectory(), filename);
-            val photoURI = FileProvider.getUriForFile(
-                context,
-                context.getPackageName() + ".provider",
-                photoFile
-            );
-            val intent = Intent(Intent.ACTION_VIEW, photoURI);
-            intent.setDataAndType(photoURI, "image/*");
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            context.startActivity(intent);
+            (context as AppCompatActivity)
+                .runOnUiThread({  onSuccess() })
+
+            openPhoto(context, photoFile)
         } else {
             val toast = Toast.makeText(
                 context,
@@ -92,13 +90,15 @@ fun takePhoto(context: Context,arSceneView: ArSceneView) {
     }, Handler(handlerThread.getLooper()));
 }
 
+
+
 fun getDirectory(): String {
     return Environment.getExternalStoragePublicDirectory(
         Environment.DIRECTORY_PICTURES
     ).toString() + separator + folderName
 }
 
-fun getFileName(): String {
+fun generateFileName(): String {
     return System.currentTimeMillis().toString() + ".png"
 }
 
