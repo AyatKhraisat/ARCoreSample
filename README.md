@@ -17,4 +17,8 @@ Models Credits:
 1. [Mario](https://www.turbosquid.com/3d-models/3d-mario-character-model-1308280)
 2. [Mario Hat](https://sketchfab.com/3d-models/marios-cap-super-mario-bros-82bcc48237ec4ff98ce770de60913d26)
 
+Animation done using [Mixamo](https://www.mixamo.com/) very useful tool from Adobe to animate FBX models  
+Modifying object, building face mesh and combine animations done using the great open source software [Blender](https://www.blender.org/)
+
+
 
