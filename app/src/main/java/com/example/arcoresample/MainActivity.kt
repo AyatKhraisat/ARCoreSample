@@ -70,14 +70,14 @@ class MainActivity : AppCompatActivity() {
         ib_switch_camera.setOnClickListener { switchCamera() }
         fab_capture.run {
             setOnClickListener({
-                hideControls()
+                toggleControls(false)
                 takePhoto(this@MainActivity, arFragment.arSceneView, {
-                    showControls()
+                    toggleControls(true)
                 })
             })
 
             setOnLongClickListener({
-                hideControls()
+                toggleControls(false)
                 fab_capture.setImageResource(R.drawable.ic_stop)
                 videoRecorder.toggleRecording()
                 true
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
                     if (eventDuration > 500) {
                         fab_capture.setImageResource(R.drawable.ic_camera)
                         videoRecorder.stopRecording()
-                        showControls()
+                        toggleControls(true)
                     }
                 }
                 false
@@ -96,20 +96,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showControls() {
-        pb_capture.visibility = GONE
-        fab_capture.isClickable = true
-        animation_group.visibility = VISIBLE
-        ib_switch_camera.visibility = VISIBLE
+       private fun toggleControls(enable: Boolean) {
+        pb_capture.visibility = if(enable) GONE else VISIBLE
+        fab_capture.isClickable = enable
+        animation_group.visibility = if(enable) VISIBLE else GONE
+        ib_switch_camera.visibility = if(enable) VISIBLE else GONE
     }
-
-    private fun hideControls() {
-        pb_capture.visibility = VISIBLE
-        fab_capture.isClickable = false
-        animation_group.visibility = GONE
-        ib_switch_camera.visibility = GONE
-    }
-
+    
     private fun loadModels() {
         modelLoader = ModelLoader(this)
 
