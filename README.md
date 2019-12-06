@@ -5,7 +5,7 @@ Exploring AR in Android with ARCore
   Main Features: 
   - face augmented 
   - Sceneform 
-  - animtions 
+  - animations 
   - capture video and pictures
 
 
